@@ -31,7 +31,7 @@ describe '[STEP1] ユーザログイン前のテスト' do
 
   describe 'アバウト画面のテスト' do
     before do
-      visit '/home/about'
+      visit '/homes/about'
     end
 
     context '表示内容の確認' do
@@ -90,7 +90,7 @@ describe '[STEP1] ユーザログイン前のテスト' do
         about_link = find_all('a')[2].text
         about_link = about_link.gsub(/\n/, '').gsub(/\A\s*/, '').gsub(/\s*\Z/, '')
         click_link about_link
-        is_expected.to eq '/home/about'
+        is_expected.to eq '/homes/about'
       end
       it 'Sign upを押すと、新規登録画面に遷移する', spec_category: "ルーティング・URL設定の理解(ログイン状況に合わせた応用)" do
         signup_link = find_all('a')[3].text
@@ -256,7 +256,7 @@ describe '[STEP1] ユーザログイン前のテスト' do
 
     context 'ログアウト機能のテスト' do
       it '正しくログアウトできている: ログアウト後のリダイレクト先においてAbout画面へのリンクが存在する', spec_category: "CRUD機能に対するコントローラの処理と流れ(ログイン状況を意識した応用)" do
-        expect(page).to have_link '', href: '/home/about'
+        expect(page).to have_link '', href: '/homes/about'
       end
       it 'ログアウト後のリダイレクト先が、トップになっている', spec_category: "CRUD機能に対するコントローラの処理と流れ(ログイン状況を意識した応用)" do
         expect(current_path).to eq '/'

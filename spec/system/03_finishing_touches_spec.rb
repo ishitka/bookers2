@@ -369,7 +369,7 @@ describe '[STEP3] 仕上げのテスト' do
       subject { page }
 
       before do
-        visit '/home/about'
+        visit '/homes/about'
       end
 
       it '本のアイコンが表示される', spec_category: "Fontawesomeの導入方法とアイコン設定" do
