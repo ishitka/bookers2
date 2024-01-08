@@ -1,0 +1,34 @@
+    <% if @book.errors.any? %>
+      <%= @book.errors.count %>errors prohibited this obj from being saved:
+      <ul>
+        <% @book.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    <% end %>
+    
+    <%= render partial: 'book', locals: {user: current_user, book: Book.new} %>
+    <div class="offset-md-1 col-md-8">
+        <h2 class="text-start">Books</h2>
+        <table class="table table-hover table-inverse">
+          <thead>
+            <tr>
+              <th></th>
+              <th class="text-start">Title</th>
+              <th class="text-start">Opinion</th>
+              <th colspan="3"></th>
+            </tr>
+          </thead>
+          <% @books.each do |book| %>
+          <tbody>
+            <tr>
+              <td class="text-start"><%= link_to image_tag(book.user.get_profile_image(100,100)), user_path(book.user) %></td>
+              <td class="text-start"><%= link_to book.title, book_path(book.id) %></td>
+              <td class="text-start"><%= book.body %></td>
+            </tr>
+          </tbody>
+          <% end %>
+        </table>
+    </div>
+  </div>
+</div>

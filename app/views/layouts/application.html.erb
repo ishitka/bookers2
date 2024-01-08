@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Bookers2</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+
+    <script src="https://kit.fontawesome.com/eb13297c3e.js" crossorigin="anonymous"></script>
+    <%= stylesheet_pack_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+  </head>
+
+  <body>
+    <header>
+      <nav class="navbar naver-expand-lg navbar-dark bg-dark">
+      <div class="container">
+        <div class="collapse navbar-collapse d-flex">
+        <a class="navbar-brand" href="/"><span>Bookers</span></a>
+          <ul class="navbar-nav ml-auto d-flex flex-row">
+          <% if user_signed_in? %>
+            <li class="nav-item pr-3">
+              <a class="nav-link text-light" href= "<%= user_path(current_user) %>" >
+                <i class="fa-solid fa-house"></i>Home
+              </a>
+            </li>
+            <li class="nav-item pr-3">
+              <a class="nav-link text-light" href="/users">
+                <i class="fa-solid fa-users"></i>Users
+              </a>
+            </li>
+            <li class="nav-item pr-3">
+              <a class="nav-link text-light" href="/books">
+                <i class="fa-solid fa-book-open"></i>Books
+              </a>
+            </li>
+            <li class="nav-item pr-3">
+              <%= link_to destroy_user_session_path, method: :delete, class: "nav-link text-light" do %>
+                <i class="fa-solid fa-right-from-bracket"></i>Log out
+              <% end %>
+            </li>
+          <% else %>
+            <li class="nav-item pr-3">
+              <a class="nav-link text-light" href="/">
+                <i class="fa-solid fa-house"></i>Home
+              </a>
+            </li>
+            <li class="nav-item pr-3">
+              <a class="nav-link text-light" href="/homes/about">
+                <i class="fa-solid fa-link"></i>About
+              </a>
+            </li>
+            <li class="nav-item pr-3">
+              <a class="nav-link text-light" href= "/users/sign_up">
+                <i class="fa-solid fa-user-plus"></i>Sign up
+              </a>
+            </li>
+            <li class="nav-item pr-3">
+              <a class="nav-link text-light" href="/users/sign_in">
+                <i class="fa-solid fa-right-to-bracket"></i>Log in
+              </a>
+            </li>
+          <% end %>
+          </ul>
+        </div>
+      </div>
+    </nav>
+    </header>
+   
+    <%= yield %>
+    <footer class="container mt-5">
+      <div class="row">
+        <p class="mx-auto">CopyRight Infratop.inc</p>
+      </div>
+    </footer>
+  </body>
+</html>

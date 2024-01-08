@@ -1,0 +1,38 @@
+<div class="container mx-15 px-sm-0 pt-3">
+  <div class="row">
+    <div class="col-md-3">
+      <h2>User info</h2>
+      <table class="table">
+        <tr class=" col border-bottom">
+          <%= image_tag user.get_profile_image(100,100)%>
+        </tr>
+        <tr class="col border-bottom">
+          <th class="py-2 pr-10 ">name</th>
+          <th class="py-2 "><%= user.name %></th>
+        </tr>
+        <tr>
+          <th class="pb-5">introduction</th>
+          <th class="pb-5"><%= user.introduction %></th>
+        </tr>
+      </table>
+
+      <a class="btn btn-outline-secondary btn-block" href="<%= edit_user_path(user.id) %>">
+        <i class="fas fa-user-cog"></i> 
+      </a>
+
+      
+      <h2 class="pt-3">New book</h2>
+      <%= form_with model: book do |f| %>
+        <div class="form-group">
+          <%= f.label :title %>
+          <%= f.text_field :title, class: "form-control book_title" %>
+        </div>
+        <div class="form-group">
+          <%= f.label :body %>
+          <%= f.text_area :body, class: "form-control book_body" %>
+        </div>
+        <div class="form-group">
+          <%= f.submit "Create Book", class: "btn btn-success" %>
+        </div>
+      <% end %>
+    </div>
